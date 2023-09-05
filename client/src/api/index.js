@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://bitcoding.herokuapp.com' });
+const API = axios.create({ baseURL: 'https://bitcoding.onrender.com' });
 
 // this is done to provide extra information to headers (in this case token is provided) to verify whether the user's request is valid or not to perform that specific action
 API.interceptors.request.use((req) => {
