@@ -1,7 +1,7 @@
 
 import express from 'express';
-import mongoose from 'mongoose';
 import cors from 'cors';
+import { run } from './connection.js';
 
 import postRoutes from './routes/posts.js';
 import userRouter from "./routes/user.js";
@@ -22,10 +22,5 @@ app.get('/',(req,res)=>{
 })
 
 const PORT=process.env.PORT || 5000;
-
-// connecting to database
-mongoose.connect("mongodb+srv://akashKumar:Akash@9084@cluster0.sf0mf.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
-  .catch((error) => console.log(`${error} did not connect`));
-
-mongoose.set('useFindAndModify', false);
+await run();
+app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`))
